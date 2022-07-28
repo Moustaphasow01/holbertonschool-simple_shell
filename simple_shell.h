@@ -17,7 +17,7 @@ char *_strcon(char *dest, char *src);
 int _strcmp(char *str1, char *str2);
 int _strlen(char *s);
 
-/** Functions Created for this Project */
+/** Functions Created for this Project*/
 size_t word_count(char *str);
 char **get_args(char *buffer);
 int main(int argc __attribute__((unused)), char **argv, char **env);
