@@ -76,12 +76,16 @@ int _strcmp(char *str1, char *str2)
  * Return: length of the string
  */
 
-int _strlen(char *str)
+int _strlen(char *s)
 {
-	int a;
+int i;
 
-	for (a = 0; str[a] != '\0'; a++)
-	{
-	}
-	return (a);
+i = 0;
+
+while (s[i] != '\0')
+{
+i++;
+}
+
+return (i);
 }
