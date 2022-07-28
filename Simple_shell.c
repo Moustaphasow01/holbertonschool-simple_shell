@@ -1,5 +1,12 @@
 #include "simple_shell.h"
 
+/**
+ * word_count - fct that count the number of word from user's input
+ *
+ * @str: input's string
+ *
+ * Return: Number of words
+ */
 size_t word_count(char *str)
 {
 	size_t i = 0, words = 0;
@@ -23,10 +30,18 @@ size_t word_count(char *str)
 	return (words);
 }
 
+/**
+ * get_args - Fct that gets command from user
+ *
+ * @buffer: memory used to retrieve input
+ * Return: (tableau d'argument)
+ */
+
 char **get_args(char *buffer)
 {
 	char **args = NULL, *arg = NULL;
 	int i = 0;
+
 	args = (char **)malloc(sizeof(char *) * (word_count(buffer) + 1));
 	arg = strtok(buffer, " ");
 	while (arg != NULL)
@@ -38,6 +53,15 @@ char **get_args(char *buffer)
 	args[i] = NULL;
 	return (args);
 }
+/**
+ * main - Main function
+ *
+ * @argc: __attribute__
+ * @argv: value per arguments
+ * @env: array of character pointers
+ *
+ * Return: (0) if succeed
+ */
 int main(int argc __attribute__((unused)), char **argv, char **env)
 {
 	(void)argc;
@@ -46,10 +70,12 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	size_t size = 0;
 	ssize_t read = 0;
 	pid_t cpid = 0;
+
 	while (1)
 	{
+		read = getline(&buffer, &size, stdin);
 		printf("$ ");
-		if ((read = getline(&buffer, &size, stdin)) != -1)
+		if ((read) != -1)
 		{
 			cpid = fork();
 			if (cpid == 0)
@@ -77,5 +103,5 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 			return (1);
 		}
 	}
-	return 0;
+	return (0);
 }
