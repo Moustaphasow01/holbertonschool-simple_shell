@@ -71,12 +71,12 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 
 	(void)argc;
 	(void)argv;
-  
 
 	while (1)
 	{
+		if (iscitty(STDIN_FILENO) == 1)
+			printf("$ ");
 		read = getline(&buffer, &size, stdin);
-		printf("$ ");
 		if ((read) != -1)
 		{
 			cpid = fork();
