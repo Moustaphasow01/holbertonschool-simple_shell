@@ -28,7 +28,7 @@ char *_strcpy(char *dest, const char *src)
  * Return: length of the string
  */
 
-int _strlen(char *s)
+int _strlen(char *str)
 {
 int i;
 
