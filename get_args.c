@@ -14,6 +14,7 @@ char **get_args(char *buffer)
 
 	args = malloc(sizeof(char *) * (wordcount(buffer) + 1));
 	arg = strtok(buffer, " ");
+	
 	while (arg != NULL)
 	{
 		args[i] = strdup(arg);
