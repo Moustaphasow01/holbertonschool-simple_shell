@@ -21,5 +21,6 @@ int _strlen(char *s);
 size_t wordcount(char *str);
 char **get_args(char *buffer);
 int main(int argc , char **argv, char **env);
+void free_args(char **args);
 
 #endif /* SIMPLE_SHELL */
