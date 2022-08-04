@@ -12,6 +12,8 @@ This repository contains the following files:
 | -------------- | --------------- |
 | simple_shell.c | main function   |
 | AUTHORS        | creators        |
+| wordcount      | count number    |
+| get_args       | gets token      |
 
 # To utilize this shell, follow the next steps:
 

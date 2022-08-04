@@ -1,10 +1,10 @@
-#include "simple_shell.h"
-
+#include "main.h"
+#include "wordcount.c"
 /**
- * get_args - Fct that gets command from user
+ * get_args - Fct that gets token
  *
  * @buffer: memory used to retrieve input
- * Return: (tableau d'argument)
+ * Return: token
  */
 
 char **get_args(char *buffer)
@@ -12,7 +12,7 @@ char **get_args(char *buffer)
 	char **args = NULL, *arg = NULL;
 	int i = 0;
 
-	args = (char **)malloc(sizeof(char *) * (word_count(buffer) + 1));
+	args = malloc(sizeof(char *) * (wordcount(buffer) + 1));
 	arg = strtok(buffer, " ");
 	while (arg != NULL)
 	{
