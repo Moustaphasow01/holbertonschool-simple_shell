@@ -22,9 +22,10 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 
 	while (1)
 	{
-		printf("$ ");
-		read = getline(&buffer, &size, stdin);
-		if ((read) != -1)
+		if (isatty(STDIN_FILENO))
+			printf("> ");
+		nsize = getline(&buffer, &size, stdin);
+		if (nsize != -1)
 		{
 			cpid = fork();
 			if (cpid == 0)
@@ -37,9 +38,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 				}
 			}
 			else if (cpid > 0)
-			{
 				wait(NULL);
-			}
 			else
 			{
 				free(buffer);
@@ -49,10 +48,8 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		else
 		{
 			free(buffer);
-			return (1);
+			return (0);
 		}
 	}
-	if (isatty(STDIN_FILENO) == 1)
-		write(STDOUT_FILENO, "\n", 1);
 	return (0);
 }
