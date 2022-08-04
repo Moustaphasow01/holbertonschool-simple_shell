@@ -1,4 +1,4 @@
-#include "simple_shell.h"
+#include "main.h"
 
 /**
  * word_count - fct that count the number of word from user's input
@@ -7,7 +7,7 @@
  *
  * Return: Number of words
  */
-size_t word_count(char *str)
+size_t wordcount(char *str)
 {
 	size_t i = 0, words = 0;
 	int flag = OUT;

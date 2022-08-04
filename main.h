@@ -1,5 +1,5 @@
-#ifndef SIMPLE_SHELL
-#define SIMPLE_SHELL
+#ifndef __SIMPLE_SHELL__
+#define __SIMPLE_SHELL__
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,7 +18,7 @@ int _strcmp(char *str1, char *str2);
 int _strlen(char *s);
 
 /** Functions Created for this Project */
-size_t word_count(char *str);
+size_t wordcount(char *str);
 char **get_args(char *buffer);
 int main(int argc __attribute__((unused)), char **argv, char **env);
 

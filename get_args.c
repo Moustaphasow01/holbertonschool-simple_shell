@@ -1,5 +1,5 @@
-#include "simple_shell.h"
-
+#include "main.h"
+#include "wordcount.c"
 /**
  * get_args - Fct that gets command from user
  *

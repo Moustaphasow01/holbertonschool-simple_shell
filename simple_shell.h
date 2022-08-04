@@ -1,5 +1,5 @@
-#ifndef SIMPLE_SHELL
-#define SIMPLE_SHELL
+#ifndef SHELL
+#define SHELL
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,4 +9,4 @@
 #include <sys/types.h>
 
 
-#endif /* SIMPLE_SHELL */
+#endif /* SHELL */
