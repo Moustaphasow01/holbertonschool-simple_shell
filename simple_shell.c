@@ -43,11 +43,13 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 					wait(NULL);
 				else
 				{
-					free(args);
+
 					free(buffer);
+					free_args(args);
 					return (1);
 				}
 			}
+				free_args(args);
 		}
 		else
 		{
