@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * word_count - fct that count the number of word from user's input
+ * wordcount - fct that count the number of word from user's input
  *
  * @str: input's string
  *
