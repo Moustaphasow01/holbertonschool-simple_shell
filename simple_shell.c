@@ -19,9 +19,8 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 
 	while (1)
 	{
-		printf("> ");
-		read = getline(&buffer, &size, stdin);
 		printf("$ ");
+		read = getline(&buffer, &size, stdin);
 		if ((read) != -1)
 		{
 			cpid = fork();
@@ -50,5 +49,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 			return (1);
 		}
 	}
+	if (isatty(STDIN_FILENO) == 1)
+		write(STDOUT_FILENO, "\n", 1);
 	return (0);
 }
