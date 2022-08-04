@@ -24,8 +24,8 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 	{
 		if (isatty(STDIN_FILENO))
 			printf("> ");
-		nsize = getline(&buffer, &size, stdin);
-		if (nsize != -1)
+		read = getline(&buffer, &size, stdin);
+		if (read != -1)
 		{
 			cpid = fork();
 			if (cpid == 0)
