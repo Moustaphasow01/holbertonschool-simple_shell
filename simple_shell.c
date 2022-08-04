@@ -10,13 +10,15 @@
  */
 int main(int argc __attribute__((unused)), char **argv, char **env)
 {
-	(void)argc;
-	(void)argv;
 	
 	char *buffer = NULL, **args = NULL;
 	size_t size = 0;
 	ssize_t read = 0;
 	pid_t cpid = 0;
+
+	(void)env;
+	(void)argv;
+
 
 	while (1)
 	{
