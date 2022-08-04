@@ -27,22 +27,25 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		read = getline(&buffer, &size, stdin);
 		if (read != -1)
 		{
-			cpid = fork();
-			if (cpid == 0)
+			args = get_args(buffer);
+			if (args[0])
 			{
-				args = get_args(buffer);
-				if ((execve(args[0], args, env)) == -1)
+				cpid = fork();
+				if (cpid == 0)
 				{
-					perror(args[0]);
-					exit(EXIT_FAILURE);
+					if ((execve(args[0], args, env)) == -1)
+					{
+						perror(args[0]);
+						exit(EXIT_FAILURE);
+					}
 				}
-			}
-			else if (cpid > 0)
-				wait(NULL);
-			else
-			{
-				free(buffer);
-				return (1);
+				else if (cpid > 0)
+					wait(NULL);
+				else
+				{
+					free(buffer);
+					return (1);
+				}
 			}
 		}
 		else
