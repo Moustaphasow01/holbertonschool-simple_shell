@@ -19,6 +19,7 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 
 	while (1)
 	{
+		printf("> ");
 		read = getline(&buffer, &size, stdin);
 		printf("$ ");
 		if ((read) != -1)
