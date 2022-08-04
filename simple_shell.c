@@ -22,37 +22,40 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 
 	while (1)
 	{
-		printf("$ ");
+		if (isatty(STDIN_FILENO))
+			printf("> ");
 		read = getline(&buffer, &size, stdin);
-		if ((read) != -1)
+		if (read != -1)
 		{
-			cpid = fork();
-			if (cpid == 0)
+			args = get_args(buffer);
+			if (args[0])
 			{
-				args = get_args(buffer);
-				if ((execve(args[0], args, env)) == -1)
+				cpid = fork();
+				if (cpid == 0)
 				{
-					perror(args[0]);
-					exit(EXIT_FAILURE);
+					if ((execve(args[0], args, env)) == -1)
+					{
+						perror(args[0]);
+						exit(EXIT_FAILURE);
+					}
+				}
+				else if (cpid > 0)
+					wait(NULL);
+				else
+				{
+
+					free(buffer);
+					free_args(args);
+					return (1);
 				}
 			}
-			else if (cpid > 0)
-			{
-				wait(NULL);
-			}
-			else
-			{
-				free(buffer);
-				return (1);
-			}
+				free_args(args);
 		}
 		else
 		{
 			free(buffer);
-			return (1);
+			return (0);
 		}
 	}
-	if (isatty(STDIN_FILENO) == 1)
-		write(STDOUT_FILENO, "\n", 1);
 	return (0);
 }
