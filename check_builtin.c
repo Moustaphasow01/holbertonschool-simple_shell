@@ -12,7 +12,6 @@ int (*check_builtin(char *command))(char *cmd, char **args, char **env)
 	int i;
 	built_in k[] = {
 		{"exit", new_exit},
-		{"env", print_env},
 		{NULL, NULL},
 	};
 
