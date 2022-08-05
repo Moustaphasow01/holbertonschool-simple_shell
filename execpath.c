@@ -5,36 +5,44 @@
  *
  */
 
-int exec_path(char **args, char **env)
+int exec_path(char **args, char **env, int line)
 {
 	pid_t child;
 	char *fullpath = NULL, *PATH;
 
-	PATH = strdup(getenv("PATH"));
-	fullpath = pathfinder(args[0], PATH);
-	free(PATH);
-	child = fork();
-	if (child == 0)
+	PATH = getenv("PATH");
+
+	if (!PATH && (execve(args[0], args, env)) == -1)
 	{
-		if ((execve(fullpath, args, env)) == -1)
+		printf("./hsh: %d: %s: not found\n", line, args[0]);
+		free(fullpath);
+		return (134);
+	}
+	else
+	{
+		PATH = strdup(PATH);
+		fullpath = pathfinder(args[0], PATH);
+		free(PATH);
+		child = fork();
+		if (child == 0)
 		{
-			write(STDERR_FILENO, "hsh: ", 6);
-			write(STDERR_FILENO, args[0], strlen(args[0]));
-			write(STDERR_FILENO, ": not found\n", 13);
-			free_args(args);
+			if ((execve(fullpath, args, env)) == -1)
+			{
+				printf("./hsh: %d: %s: not found\n", line, args[0]);
+				free(fullpath);
+				return (134);
+			}
+		}
+
+		else if (child > 0)
+			wait(NULL);
+		else
+		{
 			free(fullpath);
 			return (134);
 		}
 	}
-
-	else if (child > 0)
-		wait(NULL);
-	else
-	{
-		free_args(args);
+	if (fullpath)
 		free(fullpath);
-		return (134);
-	}
-	free(fullpath);
 	return (0);
 }
