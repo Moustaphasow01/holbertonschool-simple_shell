@@ -20,7 +20,8 @@ int _strlen(char *s);
 /** Functions Created for this Project */
 size_t wordcount(char *str);
 char **get_args(char *buffer);
-int main(int argc , char **argv, char **env);
+int main(int argc, char **argv, char **env);
 void free_args(char **args);
+int test_args();
 
 #endif /* SIMPLE_SHELL */
