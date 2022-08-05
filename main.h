@@ -7,6 +7,8 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <signal.h>
+
 
 #define IN 1
 #define OUT 0
@@ -24,5 +26,8 @@ int main(int argc, char **argv, char **env);
 int test_args(char **env, char *buffer, char **args);
 void free_args(char **args);
 char *pathfinder(char *cmd, char *PATH);
+int new_exit(char *cmd, char **args, char **env);
+int executor(char *buff, char **env, int line);
+int exec_path(char **args, char **env, int line);
 
 #endif /* SIMPLE_SHELL */
