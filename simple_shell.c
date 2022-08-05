@@ -10,7 +10,7 @@
  */
 int main(int argc __attribute__((unused)), char **argv, char **env)
 {
-	
+
 	char *buffer = NULL, **args = NULL;
 	size_t size = 0;
 	ssize_t read = 0;
@@ -18,7 +18,6 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 
 	(void)env;
 	(void)argv;
-
 
 	while (1)
 	{
@@ -29,27 +28,8 @@ int main(int argc __attribute__((unused)), char **argv, char **env)
 		{
 			args = get_args(buffer);
 			if (args[0])
-			{
-				cpid = fork();
-				if (cpid == 0)
-				{
-					if ((execve(args[0], args, env)) == -1)
-					{
-						perror(args[0]);
-						exit(EXIT_FAILURE);
-					}
-				}
-				else if (cpid > 0)
-					wait(NULL);
-				else
-				{
-
-					free(buffer);
-					free_args(args);
-					return (1);
-				}
-			}
-				free_args(args);
+				test_args();
+			free_args(args);
 		}
 		else
 		{
