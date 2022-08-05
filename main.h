@@ -23,5 +23,6 @@ char **get_args(char *buffer);
 int main(int argc, char **argv, char **env);
 int test_args(char **env, char *buffer, char **args);
 void free_args(char **args);
+char *pathfinder(char *cmd, char *PATH);
 
 #endif /* SIMPLE_SHELL */
