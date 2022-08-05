@@ -1,13 +1,17 @@
 #include "main.h"
 
 /**
- * test_arg: Function checking arguments
- *
- * Return: int
+ * test_args: Function checking arguments
+ * @env: environment
+ * @buffer: buffer used
+ * @args: arguments
+ * Return: 0 if succeed
  */
-int test_args()
+int test_args(char **env, char *buffer, char **args)
 {
+	pid_t cpid = 0;
 	cpid = fork();
+
 	if (cpid == 0)
 	{
 		if ((execve(args[0], args, env)) == -1)
@@ -20,9 +24,9 @@ int test_args()
 		wait(NULL);
 	else
 	{
-
 		free(buffer);
 		free_args(args);
 		return (1);
 	}
+	return (0);
 }
