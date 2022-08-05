@@ -1,6 +1,12 @@
 #ifndef __SIMPLE_SHELL__
 #define __SIMPLE_SHELL__
 
+typedef struct built_in
+{
+	char *command;
+	int (*f)(char *cmd, char **args, char **env);
+} built_in;
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -29,5 +35,6 @@ char *pathfinder(char *cmd, char *PATH);
 int new_exit(char *cmd, char **args, char **env);
 int executor(char *buff, char **env, int line);
 int exec_path(char **args, char **env, int line);
+int (*check_builtin(char *command))(char *cmd, char **args, char **env);
 
 #endif /* SIMPLE_SHELL */
