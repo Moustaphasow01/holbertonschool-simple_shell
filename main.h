@@ -36,5 +36,5 @@ int new_exit(char *cmd, char **args, char **env);
 int executor(char *buff, char **env, int line);
 int exec_path(char **args, char **env, int line);
 int (*check_builtin(char *command))(char *cmd, char **args, char **env);
-
+int print_env(char *cmd, char **args, char **env);
 #endif /* SIMPLE_SHELL */
