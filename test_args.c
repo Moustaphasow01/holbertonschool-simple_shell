@@ -1,15 +1,16 @@
 #include "main.h"
 
 /**
- * test_args: Function checking arguments
- * @env: environment
- * @buffer: buffer used
- * @args: arguments
+ * test_args - Function checking arguments to fork
+ * @env: array of characters pointers
+ * @buffer: buffer used to temporarily
+ * @args: tab of arguments used
  * Return: 0 if succeed
  */
 int test_args(char **env, char *buffer, char **args)
 {
 	pid_t cpid = 0;
+
 	cpid = fork();
 
 	if (cpid == 0)
