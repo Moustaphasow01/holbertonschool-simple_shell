@@ -22,6 +22,6 @@ size_t wordcount(char *str);
 char **get_args(char *buffer);
 int main(int argc, char **argv, char **env);
 void free_args(char **args);
-int test_args();
+int test_args(char **env, char *buffer, char **args);
 
 #endif /* SIMPLE_SHELL */
