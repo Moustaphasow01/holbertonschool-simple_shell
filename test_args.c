@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * test_arg: Function checking arguments
- * @argc: __attribute__
- * @argv: value per arguments
- * @env: array of character pointers
- * Return: int
+ * test_args: Function checking arguments
+ * @env: environment
+ * @buffer: buffer used
+ * @args: arguments
+ * Return: 0 if succeed
  */
 int test_args(char **env, char *buffer, char **args)
 {

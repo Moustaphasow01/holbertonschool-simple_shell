@@ -4,7 +4,7 @@
  *
  * @argc: __attribute__
  * @argv: value per arguments
- * @env: array of character pointers
+ * @env: array of characters pointers
  *
  * Return: (0) if succeed
  */
